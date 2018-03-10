@@ -62,12 +62,12 @@
             $length -= 0.1; // subtract start post
             var_dump($length);
 
-            $postRailingUnit = (int) ceil($length / 1.6); // divide by 1 railing / 1 post combo & round up
-            var_dump($postRailingUnit);
+            $postRailUnit = ceil($length / 1.6); // divide by 1 railing / 1 post combo & round up
+            var_dump($postRailUnit);
 
 
-            $posts = $postRailingUnit + 1;
-            $railings = $postRailingUnit;
+            $posts = $postRailUnit + 1; // always need 1 more post than railings
+            $railings = $postRailUnit;
 
             return '<p>Posts: ' . $posts . '</p>' . '<p>Railings: ' . $railings . '</p>' ;
         }
