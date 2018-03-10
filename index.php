@@ -31,9 +31,9 @@
 
             $posts -= 1; //subtract start post
             If ($posts < 1) {
-                return 'Minimum of 2 posts required for a fence!';
+                return '<p>Minimum of 2 posts required for a fence!</p>';
             } else {
-                return '<p>Fence length: ' . (($railings * 1.5) + ($railings * 0.1)) . ' meters</p>'; // # of posts must equal # of railings
+                return '<p>Fence length: ' . (0.1 + ($posts * 0.1) + ($posts * 1.5)) . ' meters</p>'; // # of posts must equal # of railings
             }
         }
 
