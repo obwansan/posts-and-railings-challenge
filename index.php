@@ -24,7 +24,7 @@
             $railings = $_POST['railings'];
             $errorMessage = '';
 
-            $posts -= 1; //subtract start post
+            $posts -= 1; // subtract start post
             if ($posts < 1) {
                 $errorMessage = '<p>Minimum of 2 posts required for a fence!</p>';
             }
@@ -41,34 +41,36 @@
 
         ?>
 
-        <h1> Posts and Railings Calculator</h1>
+        <h1>Posts and Railings Calculator</h1>
         <label>Length (meters):
             <input type="number" name="length" id="length">
         </label>
         <input type="submit">
         <?php
-/*
-        $railings = 0;
-        $posts = 0;
-        $length = 0;
-        $errorMessage = "";
 
-        // get value
-        echo '<p>' . $_POST["length"] . '</p>';
-        $length = $_POST["length"];
-
-        // do maths
         function calcPostsAndRailings() {
+
+            $posts = 0;
+            $railings = 0;
+            $length = $_POST['length'];
+
             if ($length < 1.7) {
-                $errorMessage = "A fence cannot be shorter than 1.7m";
-                return $errorMessage;
+                return '<p>Minimum fence length is 1.7m (1 x 1.5m railing & 2 x 10cm posts)!</p>';
             }
 
+            $length -= 0.1; // subtract start post
+            $postRailingUnit = $length / 1.6; // divide by 1 railing & 1 post combo
 
+            if (is_int($postRailingUnit)) {
+                $posts = $postRailingUnit;
+                $railings = $postRailingUnit;
+            } else {
+                $posts = $postRailingUnit;
+                $railings = $postRailingUnit + 1;
+            }
+            return '<p>Posts: ' . $posts . '</p>' . '<p>Railings: ' . $railings . '</p>' ;
         }
 
-        // print result
-*/
         ?>
     </form>
 </div>
