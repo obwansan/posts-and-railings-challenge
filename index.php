@@ -18,26 +18,25 @@
         <input type="submit">
         <?php
 
-        // get value
-//        echo '<p>' . $_POST["railings"] . '</p>';
-//        echo '<p>' . $_POST["posts"] . '</p>';
-
-        // do maths
         function calcFenceLength() {
 
             $posts = $_POST['posts'];
             $railings = $_POST['railings'];
-            $fenceLength;
+            $errorMessage = '';
 
             $posts -= 1; //subtract start post
-            If ($posts < 1) {
-                return '<p>Minimum of 2 posts required for a fence!</p>';
-            } else {
+            if ($posts < 1) {
+                $errorMessage = '<p>Minimum of 2 posts required for a fence!</p>';
+            }
+            if ($railings < 1) {
+                $errorMessage .= '<p>Minimum of 1 railing required for a fence!</p>';
+            }
+            if ($errorMessage == '') {
                 return '<p>Fence length: ' . (0.1 + ($posts * 0.1) + ($posts * 1.5)) . ' meters</p>'; // # of posts must equal # of railings
+            } else {
+                return $errorMessage;
             }
         }
-
-        // print result
         echo calcFenceLength();
 
         ?>
