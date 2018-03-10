@@ -10,10 +10,10 @@
     <h1>Fence Length Calculator</h1>
     <form method="post" action="index.php">
         <label for="railings">Number of railings:
-            <input type="number" name="railings" id="railings" min="1" max="10000">
+            <input type="number" name="railings" id="railings">
         </label>
         <label for="posts">Number of posts:
-            <input type="number" name="posts" id="posts" min="2" max="10000">
+            <input type="number" name="posts" id="posts">
         </label>
         <input type="submit">
         <?php
@@ -27,13 +27,13 @@
 
             $posts = $_POST['posts'];
             $railings = $_POST['railings'];
-            $fenceLength = 0;
+            $fenceLength;
 
-            $posts -= 1;
+            $posts -= 1; //subtract start post
             If ($posts < 1) {
                 return 'Minimum of 2 posts required for a fence!';
             } else {
-                return 'Fence length: ' . (($railings * 1.5) + ($railings * 0.1)) . 'm';
+                return '<p>Fence length: ' . (($railings * 1.5) + ($railings * 0.1)) . ' meters</p>'; // # of posts must equal # of railings
             }
         }
 
@@ -48,7 +48,7 @@
         </label>
         <input type="submit">
         <?php
-
+/*
         $railings = 0;
         $posts = 0;
         $length = 0;
@@ -69,10 +69,9 @@
         }
 
         // print result
-
+*/
         ?>
     </form>
 </div>
-<script type="text/javascript" src="postsRailings.js"></script>
 </body>
 </html>
