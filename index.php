@@ -43,7 +43,7 @@
 
         <h1>Posts and Railings Calculator</h1>
         <label>Length (meters):
-            <input type="number" name="length" id="length">
+            <input type="text" name="length" id="length">
         </label>
         <input type="submit">
         <?php
@@ -52,25 +52,27 @@
 
             $posts = 0;
             $railings = 0;
-            $length = $_POST['length'];
+            $length = (float) $_POST['length'];  // convert from string to float
+            var_dump($length);
 
             if ($length < 1.7) {
                 return '<p>Minimum fence length is 1.7m (1 x 1.5m railing & 2 x 10cm posts)!</p>';
             }
 
             $length -= 0.1; // subtract start post
-            $postRailingUnit = $length / 1.6; // divide by 1 railing & 1 post combo
+            var_dump($length);
 
-            if (is_int($postRailingUnit)) {
-                $posts = $postRailingUnit;
-                $railings = $postRailingUnit;
-            } else {
-                $posts = $postRailingUnit;
-                $railings = $postRailingUnit + 1;
-            }
+            $postRailingUnit = (int) ceil($length / 1.6); // divide by 1 railing / 1 post combo & round up
+            var_dump($postRailingUnit);
+
+
+            $posts = $postRailingUnit + 1;
+            $railings = $postRailingUnit;
+
             return '<p>Posts: ' . $posts . '</p>' . '<p>Railings: ' . $railings . '</p>' ;
         }
 
+        echo calcPostsAndRailings()
         ?>
     </form>
 </div>
