@@ -20,9 +20,7 @@ function calcFenceLength() {
     if (empty($errorMessage)) {
         return '<p>Fence length: ' . (0.1 + ($posts * 0.1) + ($posts * 1.5)) . ' meters</p>'; // # of posts must equal # of railings
     } else {
-        if($posts != NULL && $railings != NULL) {
             return $errorMessage;
-        }
     }
 }
 
@@ -46,10 +44,8 @@ function calcPostsAndRailings() {
     if (empty($errorMessage)) {
         return '<p>Posts: ' . $posts . '</p>' . '<p>Railings: ' . $railings . '</p>';
     } else {
-        if(!$length) {
             return $errorMessage;
         }
-    }
 }
 
 ?>
